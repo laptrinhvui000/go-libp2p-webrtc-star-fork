@@ -238,11 +238,11 @@ func (c *connection) String() string {
 }
 
 func (c *connection) LocalPrivateKey() crypto.PrivKey {
-	logger.Warningf("%s: Local private key undefined", c.id)
+	logger.Warnf("%s: Local private key undefined", c.id)
 	return nil
 }
 
 func (c *connection) RemotePublicKey() crypto.PubKey {
-	logger.Warningf("%s: Remote public key undefined", c.id)
+	logger.Warnf("%s: Remote public key undefined", c.id)
 	return nil
 }

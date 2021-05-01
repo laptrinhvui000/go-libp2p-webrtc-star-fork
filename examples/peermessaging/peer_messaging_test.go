@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	peerMessagingSendSingleMessageProtocolID = protocol.ID("/peer-messaging-send-single-message/1.0.0")
-	waitForStreamTimeout                     = 5 * time.Minute
+	protocolID           = protocol.ID("/peer-messaging-send-single-message/1.0.0")
+	waitForStreamTimeout = 5 * time.Minute
 
 	localSignalAddr = "/dns4/localhost/tcp/9090/ws/p2p-webrtc-star"
 	// remoteSignalAddr = "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
@@ -36,14 +36,12 @@ func TestSendSingleMessage(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	protocolID := peerMessagingSendSingleMessageProtocolID
-
 	firstHost := testutils.MustCreateHost(t, ctx, localSignalAddr)
 	secondHost := testutils.MustCreateHost(t, ctx, localSignalAddr)
 
 	var wg sync.WaitGroup
 	wg.Add(1)
-	secondHost.SetStreamHandler(peerMessagingSendSingleMessageProtocolID, func(stream network.Stream) {
+	secondHost.SetStreamHandler(protocolID, func(stream network.Stream) {
 		message := make([]byte, helloWorldMessageSize)
 
 		n, err := io.ReadFull(stream, message)

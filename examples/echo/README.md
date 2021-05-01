@@ -1,6 +1,6 @@
 # Echo client-server
 
-The example constists of two parts - client and server. The server exposes basic *echo* handler that echoes back client's messages.
+The example consists of two parts - client and server. The server exposes basic *echo* handler that echoes back client's messages.
 
 Star server https://wrtc-star1.par.dwebops.pub/ is used for signalling purpose.
 

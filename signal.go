@@ -10,7 +10,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/transport"
 	ma "github.com/multiformats/go-multiaddr"
-	"github.com/multiformats/go-multiaddr-net"
+	"github.com/multiformats/go-multiaddr/net"
 	"github.com/pion/datachannel"
 	"github.com/pion/webrtc/v2"
 )
