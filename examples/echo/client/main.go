@@ -16,7 +16,7 @@ import (
 
 const (
 	protocolID = "/examples-echo/1.0.0"
-	signalAddr = "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
+	signalAddr = "/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star"
 
 	waitForStreamTimeout = 5 * time.Minute
 )
