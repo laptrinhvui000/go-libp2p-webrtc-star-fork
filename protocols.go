@@ -6,53 +6,37 @@ import (
 )
 
 const (
-	ipfsProtocolName = "ipfs"
-
-	webRTCStarProtocolCode = 499
-	webRTCStarProtocolName = "p2p-webrtc-star"
-
-	wsProtocolCode = 477
-
-	wssProtocolCode = 498
-	wssProtocolName = "wss"
+	ipfsProtocolName  = "ipfs"
+	P_P2P_WEBRTC_STAR = 0x01F3
 )
 
 var (
-	protocol          = mustCreateProtocol(webRTCStarProtocolCode, webRTCStarProtocolName)
 	protocolMultiaddr ma.Multiaddr
+	protocol          = ma.Protocol{
+		Code:  P_P2P_WEBRTC_STAR,
+		Name:  "p2p-webrtc-star",
+		VCode: ma.CodeToVarint(P_P2P_WEBRTC_STAR),
+	}
+	protoP2P_WEBRTC_STAR = ma.Protocol{
+		Name: "p2p-webrtc-direct",
+		Code: P_P2P_WEBRTC_STAR,
+	}
 
-	wssProtocol = mustCreateProtocol(wssProtocolCode, wssProtocolName)
-
-	format = mafmt.And(mafmt.TCP,
-		mafmt.Or(mafmt.Base(wssProtocol.Code), mafmt.Base(wsProtocolCode)),
-		mafmt.Base(webRTCStarProtocolCode))
+	WebRTCStar = mafmt.And(
+		mafmt.TCP,
+		mafmt.Or(mafmt.Base(ma.P_WSS), mafmt.Base(ma.P_WS)), mafmt.Base(P_P2P_WEBRTC_STAR),
+	)
 )
 
 func init() {
-	mustAddProtocol(wssProtocol)
-	mustAddProtocol(protocol)
-	mustCreateStarMultiaddr()
-}
-
-func mustCreateStarMultiaddr() {
 	var err error
-	protocolMultiaddr, err = ma.NewMultiaddr("/" + webRTCStarProtocolName)
-	if err != nil {
+
+	if err = ma.AddProtocol(protocol); err != nil {
 		logger.Fatal(err)
 	}
-}
 
-func mustAddProtocol(protocol ma.Protocol) {
-	err := ma.AddProtocol(protocol)
+	protocolMultiaddr, err = ma.NewMultiaddr("/" + protocol.Name)
 	if err != nil {
 		logger.Fatal(err)
-	}
-}
-
-func mustCreateProtocol(code int, name string) ma.Protocol {
-	return ma.Protocol{
-		Code:  code,
-		Name:  name,
-		VCode: ma.CodeToVarint(code),
 	}
 }

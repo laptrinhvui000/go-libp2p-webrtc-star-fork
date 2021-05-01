@@ -111,10 +111,10 @@ func createPeerMultiaddr(signalMultiaddr ma.Multiaddr, peerID peer.ID) (ma.Multi
 }
 
 func readProtocolForSignalURL(maddr ma.Multiaddr) string {
-	if _, err := maddr.ValueForProtocol(wssProtocolCode); err == nil {
-		return "wss://"
+	if _, err := maddr.ValueForProtocol(ma.P_WSS); err != nil {
+		return "ws://"
 	}
-	return "ws://"
+	return "wss://"
 }
 
 func (s *signal) dial(ctx context.Context, remotePeerID peer.ID) (transport.CapableConn, error) {

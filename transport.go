@@ -82,7 +82,7 @@ func (t *Transport) unregisterSignal(addr ma.Multiaddr) error {
 }
 
 func (t *Transport) CanDial(addr ma.Multiaddr) bool {
-	return format.Matches(addr)
+	return WebRTCStar.Matches(addr)
 }
 
 func (t *Transport) Protocols() []int {
