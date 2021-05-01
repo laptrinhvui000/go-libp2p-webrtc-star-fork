@@ -2,10 +2,11 @@ package star
 
 import (
 	"encoding/json"
+	"time"
+
 	"github.com/gorilla/websocket"
 	"github.com/libp2p/go-libp2p-core/transport"
 	ma "github.com/multiformats/go-multiaddr"
-	"time"
 )
 
 func startClient(url string, peerMultiaddr ma.Multiaddr, addressBook addressBook,

@@ -9,14 +9,14 @@ Star server https://wrtc-star.discovery.libp2p.io/ is used for signalling purpos
 Run server:
 
 ```bash
-$ go get github.com/mtojek/go-libp2p-webrtc-star/examples/echo/server
+$ go get github.com/dennis-tra/go-libp2p-webrtc-star/examples/echo/server
 $ server
 2019/09/03 12:39:24 Server host ID: QmZrEj3jgeF3vUAxPVRSyk1QnZQBbQDNMJqXauLwh6knVr
 ```
 
 Please note the server host ID and spawn client:
 ```bash
-$ go get github.com/mtojek/go-libp2p-webrtc-star/examples/echo/client
+$ go get github.com/dennis-tra/go-libp2p-webrtc-star/examples/echo/client
 $ client QmZrEj3jgeF3vUAxPVRSyk1QnZQBbQDNMJqXauLwh6knVr
 ```
 

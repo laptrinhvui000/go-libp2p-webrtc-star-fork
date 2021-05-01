@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/dennis-tra/go-libp2p-webrtc-star/testutils"
 	"github.com/libp2p/go-libp2p-core/network"
 	"github.com/libp2p/go-libp2p-core/peer"
-	"github.com/mtojek/go-libp2p-webrtc-star/testutils"
 )
 
 const (

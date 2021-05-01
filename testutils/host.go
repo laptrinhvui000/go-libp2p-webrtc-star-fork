@@ -2,14 +2,15 @@ package testutils
 
 import (
 	"context"
+	"testing"
+
+	"github.com/dennis-tra/go-libp2p-webrtc-star"
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 	yamux "github.com/libp2p/go-libp2p-yamux"
-	"github.com/mtojek/go-libp2p-webrtc-star"
 	"github.com/pion/webrtc/v2"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func MustCreateHost(t *testing.T, ctx context.Context, signalAddr string) host.Host {

@@ -1,17 +1,18 @@
 package transport
 
 import (
+	"testing"
+
+	"github.com/dennis-tra/go-libp2p-webrtc-star"
+	"github.com/dennis-tra/go-libp2p-webrtc-star/testutils"
 	golog "github.com/ipfs/go-log"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/transport"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 	"github.com/libp2p/go-libp2p-testing/suites/transport"
 	yamux "github.com/libp2p/go-libp2p-yamux"
-	"github.com/mtojek/go-libp2p-webrtc-star"
-	"github.com/mtojek/go-libp2p-webrtc-star/testutils"
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/pion/webrtc/v2"
-	"testing"
 )
 
 const starAddress = "/dns4/localhost/tcp/9090/ws/p2p-webrtc-star"

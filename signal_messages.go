@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"sync"
+	"time"
+
 	"github.com/gorilla/websocket"
 	"github.com/libp2p/go-libp2p-core/peer"
 	ma "github.com/multiformats/go-multiaddr"
-	"sync"
-	"time"
 )
 
 const wsPeerAliveTTL = 60 * time.Second

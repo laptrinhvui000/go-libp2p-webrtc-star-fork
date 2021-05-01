@@ -1,11 +1,12 @@
 package star
 
 import (
-	"github.com/pion/datachannel"
 	"io"
 	"math"
 	"net"
 	"time"
+
+	"github.com/pion/datachannel"
 )
 
 const wrapperBufferSize = math.MaxUint16

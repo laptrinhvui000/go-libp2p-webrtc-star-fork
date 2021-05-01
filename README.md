@@ -3,17 +3,17 @@ libp2p WebRTC transport in Go that includes a discovery mechanism provided by th
 
 Status: **beta**
 
-Lead maintainer: [Marcin Tojek (@mtojek)](https://github.com/mtojek)
+Lead maintainer: [Marcin Tojek (@dennis-tra)](https://github.com/dennis-tra)
 
 ## Getting started
 
 ```bash
-$ go get github.com/mtojek/go-libp2p-webrtc-star
+$ go get github.com/dennis-tra/go-libp2p-webrtc-star
 ```
 
 ## Basic example
 
-(see: [testutils/host.go](https://github.com/mtojek/go-libp2p-webrtc-star/blob/master/testutils/host.go))
+(see: [testutils/host.go](https://github.com/dennis-tra/go-libp2p-webrtc-star/blob/master/testutils/host.go))
 
 ```go
 func MustCreateHost(t *testing.T, ctx context.Context) host.Host {
@@ -158,4 +158,4 @@ Please remember that the repository falls under the IPFS [Code of Conduct](https
 
 ## License
 
-[Apache License 2.0](https://github.com/mtojek/go-libp2p-webrtc-star/blob/master/LICENSE)
+[Apache License 2.0](https://github.com/dennis-tra/go-libp2p-webrtc-star/blob/master/LICENSE)

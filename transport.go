@@ -3,12 +3,13 @@ package star
 import (
 	"context"
 	"fmt"
+	"sync"
+
 	"github.com/libp2p/go-libp2p-core/mux"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/transport"
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/pion/webrtc/v2"
-	"sync"
 )
 
 type Transport struct {

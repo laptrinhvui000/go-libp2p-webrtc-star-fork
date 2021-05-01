@@ -4,6 +4,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"strings"
+
 	"github.com/libp2p/go-libp2p-core/mux"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/transport"
@@ -11,7 +13,6 @@ import (
 	"github.com/multiformats/go-multiaddr-net"
 	"github.com/pion/datachannel"
 	"github.com/pion/webrtc/v2"
-	"strings"
 )
 
 const (

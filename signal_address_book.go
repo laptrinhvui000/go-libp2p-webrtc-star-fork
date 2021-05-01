@@ -1,9 +1,10 @@
 package star
 
 import (
+	"time"
+
 	"github.com/libp2p/go-libp2p-core/peer"
 	ma "github.com/multiformats/go-multiaddr"
-	"time"
 )
 
 type addressBook interface {

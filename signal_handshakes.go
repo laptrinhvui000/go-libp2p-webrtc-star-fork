@@ -4,10 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"github.com/pion/webrtc/v2"
 	"math/rand"
 	"sync"
 	"time"
+
+	"github.com/pion/webrtc/v2"
 )
 
 const handshakeAnswerTimeout = 5 * time.Minute

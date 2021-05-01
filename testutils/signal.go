@@ -1,9 +1,10 @@
 package testutils
 
 import (
+	"testing"
+
 	"github.com/multiformats/go-multiaddr"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func MustCreateSignalAddr(t *testing.T, signalAddr string) multiaddr.Multiaddr {

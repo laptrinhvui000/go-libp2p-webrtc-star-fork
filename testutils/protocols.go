@@ -1,8 +1,9 @@
 package testutils
 
 import (
-	ma "github.com/multiformats/go-multiaddr"
 	"log"
+
+	ma "github.com/multiformats/go-multiaddr"
 )
 
 func MustAddProtocol(protocol ma.Protocol) {

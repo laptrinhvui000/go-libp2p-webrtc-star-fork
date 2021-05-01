@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/dennis-tra/go-libp2p-webrtc-star/testutils"
 	golog "github.com/ipfs/go-log"
 	"github.com/libp2p/go-libp2p-core/network"
 	"github.com/libp2p/go-libp2p-core/protocol"
-	"github.com/mtojek/go-libp2p-webrtc-star/testutils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -19,8 +19,8 @@ const (
 	peerMessagingSendSingleMessageProtocolID = protocol.ID("/peer-messaging-send-single-message/1.0.0")
 	waitForStreamTimeout                     = 5 * time.Minute
 
-	localSignalAddr  = "/dns4/localhost/tcp/9090/ws/p2p-webrtc-star"
-	//remoteSignalAddr = "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
+	localSignalAddr = "/dns4/localhost/tcp/9090/ws/p2p-webrtc-star"
+	// remoteSignalAddr = "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
 )
 
 var (

@@ -1,8 +1,12 @@
 package star
 
 import (
+	"context"
 	"errors"
 	"fmt"
+	"net"
+	"sync"
+
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/mux"
 	"github.com/libp2p/go-libp2p-core/peer"
@@ -11,8 +15,6 @@ import (
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/pion/datachannel"
 	"github.com/pion/webrtc/v2"
-	"net"
-	"sync"
 )
 
 type connection struct {
@@ -81,7 +83,7 @@ func detachDataChannel(dataChannel *webrtc.DataChannel) chan detachResult {
 	return detachedCh
 }
 
-func (c *connection) OpenStream() (mux.MuxedStream, error) {
+func (c *connection) OpenStream(ctx context.Context) (mux.MuxedStream, error) {
 	logger.Debugf("%s: Open stream", c.id)
 
 	muxedConnection, err := c.getMuxedConnection()
@@ -89,7 +91,7 @@ func (c *connection) OpenStream() (mux.MuxedStream, error) {
 		return nil, err
 	}
 	if muxedConnection != nil {
-		return muxedConnection.OpenStream()
+		return muxedConnection.OpenStream(ctx)
 	}
 
 	rawDataChannel := c.checkInitChannel()
@@ -110,7 +112,7 @@ func (c *connection) OpenStream() (mux.MuxedStream, error) {
 		rawDataChannel = detached.dataChannel
 	}
 
-	return c.muxedConnection.OpenStream()
+	return c.muxedConnection.OpenStream(ctx)
 }
 
 func (c *connection) checkInitChannel() datachannel.ReadWriteCloser {

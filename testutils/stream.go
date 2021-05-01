@@ -1,9 +1,10 @@
 package testutils
 
 import (
-	"github.com/libp2p/go-libp2p-core/network"
 	"testing"
 	"time"
+
+	"github.com/libp2p/go-libp2p-core/network"
 )
 
 func WaitForStream(t *testing.T, newStream func() (network.Stream, error), timeout time.Duration) network.Stream {
