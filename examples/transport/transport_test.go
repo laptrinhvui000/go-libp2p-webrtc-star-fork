@@ -1,8 +1,6 @@
 package transport
 
 import (
-	"reflect"
-	"runtime"
 	"testing"
 
 	"github.com/dennis-tra/go-libp2p-webrtc-star"
@@ -84,36 +82,65 @@ func TestStreamReset(t *testing.T) {
 	ttransport.SubtestStreamReset(t, starTransportA, starTransportB, mAddr, identityA)
 }
 
-var Subtests = []func(t *testing.T, ta, tb transport.Transport, maddr ma.Multiaddr, peerA peer.ID){
-	// ttransport.SubtestProtocols,
-	// ttransport.SubtestBasic,
-	// ttransport.SubtestCancel,
-	// ttransport.SubtestPingPong,
+//var Subtests = []func(t *testing.T, ta, tb transport.Transport, maddr ma.Multiaddr, peerA peer.ID){
+//	// ttransport.SubtestProtocols,
+//	// ttransport.SubtestBasic,
+//	// ttransport.SubtestCancel,
+//	// ttransport.SubtestPingPong,
+//
+//	// Stolen from the stream muxer test suite.
+//	// ttransport.SubtestStress1Conn1Stream1Msg,
+//	ttransport.SubtestStress1Conn1Stream100Msg,
+//	ttransport.SubtestStress1Conn100Stream100Msg,
+//	// ttransport.SubtestStress50Conn10Stream50Msg,
+//	// ttransport.SubtestStress1Conn1000Stream10Msg,
+//	// ttransport.SubtestStress1Conn100Stream100Msg10MB,
+//	// ttransport.SubtestStreamOpenStress,
+//	// ttransport.SubtestStreamReset,
+//}
+//
+//func getFunctionName(i interface{}) string {
+//	return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
+//}
+//
+//func TestStreamTransport(t *testing.T) {
+//	ta, tb, maddr, peerA := testParameters(t)
+//
+//	for _, f := range Subtests {
+//		t.Run(getFunctionName(f), func(t *testing.T) {
+//			f(t, ta, tb, maddr, peerA)
+//		})
+//	}
+//}
 
-	// Stolen from the stream muxer test suite.
-	// ttransport.SubtestStress1Conn1Stream1Msg,
-	// ttransport.SubtestStress1Conn1Stream100Msg,
-	ttransport.SubtestStress1Conn100Stream100Msg,
-	// ttransport.SubtestStress50Conn10Stream50Msg,
-	// ttransport.SubtestStress1Conn1000Stream10Msg,
-	// ttransport.SubtestStress1Conn100Stream100Msg10MB,
-	// ttransport.SubtestStreamOpenStress,
-	// ttransport.SubtestStreamReset,
-}
-
-func getFunctionName(i interface{}) string {
-	return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
-}
-
-func TestStreamTransport(t *testing.T) {
-	ta, tb, maddr, peerA := testParameters(t)
-
-	for _, f := range Subtests {
-		t.Run(getFunctionName(f), func(t *testing.T) {
-			f(t, ta, tb, maddr, peerA)
-		})
-	}
-}
+//
+//func TestStreamSingle(t *testing.T) {
+//	ta, tb, maddr, peerA := testParameters(t)
+//
+//	go func() {
+//		log.Println(http.ListenAndServe("localhost:6060", nil))
+//	}()
+//	time.AfterFunc(time.Second*15, func() {
+//		f, err := os.Create("stack-trace.txt")
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//
+//		fmt.Println("PRITINGNNGNN")
+//		err = pprof.Lookup("goroutine").WriteTo(f, 1)
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//	})
+//
+//	ttransport.SubtestStress(t, ta, tb, maddr, peerA, ttransport.Options{
+//		ConnNum:   1,
+//		StreamNum: 100,
+//		MsgNum:    100,
+//		MsgMax:    100,
+//		MsgMin:    100,
+//	})
+//}
 
 func testParameters(t *testing.T) (transport.Transport, transport.Transport, ma.Multiaddr, peer.ID) {
 	starTransportA, identityA := mustCreateStarTransport(t)
