@@ -8,12 +8,14 @@ require (
 	github.com/libp2p/go-libp2p v0.13.0
 	github.com/libp2p/go-libp2p-core v0.8.5
 	github.com/libp2p/go-libp2p-peerstore v0.2.7
-	github.com/libp2p/go-libp2p-testing v0.4.0 // indirect
+	github.com/libp2p/go-libp2p-testing v0.4.0
 	github.com/libp2p/go-libp2p-yamux v0.5.1
 	github.com/multiformats/go-multiaddr v0.3.1
 	github.com/multiformats/go-multiaddr-fmt v0.1.0
-	github.com/multiformats/go-multiaddr-net v0.2.0
 	github.com/pion/datachannel v1.4.21
 	github.com/pion/webrtc/v2 v2.2.26
 	github.com/stretchr/testify v1.6.1
 )
+
+// Remove when https://github.com/libp2p/go-libp2p-testing/pull/32 is merged
+replace github.com/libp2p/go-libp2p-testing v0.4.0 => github.com/dennis-tra/go-libp2p-testing v0.4.1-0.20210501154238-e24c08f444bb

@@ -11,15 +11,11 @@ const (
 )
 
 var (
-	protocolMultiaddr ma.Multiaddr
-	protocol          = ma.Protocol{
-		Code:  P_P2P_WEBRTC_STAR,
-		Name:  "p2p-webrtc-star",
-		VCode: ma.CodeToVarint(P_P2P_WEBRTC_STAR),
-	}
+	protocolMultiaddr    ma.Multiaddr
 	protoP2P_WEBRTC_STAR = ma.Protocol{
-		Name: "p2p-webrtc-direct",
-		Code: P_P2P_WEBRTC_STAR,
+		Name:  "p2p-webrtc-star",
+		Code:  P_P2P_WEBRTC_STAR,
+		VCode: ma.CodeToVarint(P_P2P_WEBRTC_STAR),
 	}
 
 	WebRTCStar = mafmt.And(
@@ -31,11 +27,11 @@ var (
 func init() {
 	var err error
 
-	if err = ma.AddProtocol(protocol); err != nil {
+	if err = ma.AddProtocol(protoP2P_WEBRTC_STAR); err != nil {
 		logger.Fatal(err)
 	}
 
-	protocolMultiaddr, err = ma.NewMultiaddr("/" + protocol.Name)
+	protocolMultiaddr, err = ma.NewMultiaddr("/" + protoP2P_WEBRTC_STAR.Name)
 	if err != nil {
 		logger.Fatal(err)
 	}

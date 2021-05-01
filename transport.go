@@ -86,7 +86,7 @@ func (t *Transport) CanDial(addr ma.Multiaddr) bool {
 }
 
 func (t *Transport) Protocols() []int {
-	return []int{protocol.Code}
+	return []int{protoP2P_WEBRTC_STAR.Code}
 }
 
 func (t *Transport) Proxy() bool {

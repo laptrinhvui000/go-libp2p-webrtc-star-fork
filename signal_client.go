@@ -72,7 +72,7 @@ func startClient(url string, peerMultiaddr ma.Multiaddr, addressBook addressBook
 			logger.Debugf("%s: Received message: %s", sp.SID, message)
 			err = processMessage(addressBook, handshakeSubscription, message)
 			if err != nil {
-				logger.Warningf("%s: Can't process message: %v", sp.SID, err)
+				logger.Warnf("%s: Can't process message: %v", sp.SID, err)
 				continue
 			}
 		}

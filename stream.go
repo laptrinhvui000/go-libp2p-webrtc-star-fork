@@ -67,7 +67,7 @@ func (s *stream) Write(p []byte) (int, error) {
 }
 
 func (s *stream) Close() error {
-	logger.Warningf("%s: Close stream", s.id)
+	logger.Warnf("%s: Close stream", s.id)
 	return s.dataChannel.Close()
 }
 

@@ -1,11 +1,14 @@
 package transport
 
 import (
+	"reflect"
+	"runtime"
 	"testing"
 
 	"github.com/dennis-tra/go-libp2p-webrtc-star"
 	"github.com/dennis-tra/go-libp2p-webrtc-star/testutils"
 	golog "github.com/ipfs/go-log"
+
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/transport"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
@@ -21,6 +24,11 @@ func init() {
 	golog.SetDebugLogging()
 }
 
+func TestProtocols(t *testing.T) {
+	starTransportA, starTransportB, mAddr, identityA := testParameters(t)
+	ttransport.SubtestProtocols(t, starTransportA, starTransportB, mAddr, identityA)
+}
+
 func TestBasic(t *testing.T) {
 	starTransportA, starTransportB, mAddr, identityA := testParameters(t)
 	ttransport.SubtestBasic(t, starTransportA, starTransportB, mAddr, identityA)
@@ -33,7 +41,7 @@ func TestCancel(t *testing.T) {
 
 func TestPingPong(t *testing.T) {
 	starTransportA, starTransportB, mAddr, identityA := testParameters(t)
-	ttransport.SubtestCancel(t, starTransportA, starTransportB, mAddr, identityA)
+	ttransport.SubtestPingPong(t, starTransportA, starTransportB, mAddr, identityA)
 }
 
 func TestStress1Conn1Stream1Msg(t *testing.T) {
@@ -74,6 +82,37 @@ func TestStreamOpenStress(t *testing.T) {
 func TestStreamReset(t *testing.T) {
 	starTransportA, starTransportB, mAddr, identityA := testParameters(t)
 	ttransport.SubtestStreamReset(t, starTransportA, starTransportB, mAddr, identityA)
+}
+
+var Subtests = []func(t *testing.T, ta, tb transport.Transport, maddr ma.Multiaddr, peerA peer.ID){
+	// ttransport.SubtestProtocols,
+	// ttransport.SubtestBasic,
+	// ttransport.SubtestCancel,
+	// ttransport.SubtestPingPong,
+
+	// Stolen from the stream muxer test suite.
+	// ttransport.SubtestStress1Conn1Stream1Msg,
+	// ttransport.SubtestStress1Conn1Stream100Msg,
+	ttransport.SubtestStress1Conn100Stream100Msg,
+	// ttransport.SubtestStress50Conn10Stream50Msg,
+	// ttransport.SubtestStress1Conn1000Stream10Msg,
+	// ttransport.SubtestStress1Conn100Stream100Msg10MB,
+	// ttransport.SubtestStreamOpenStress,
+	// ttransport.SubtestStreamReset,
+}
+
+func getFunctionName(i interface{}) string {
+	return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
+}
+
+func TestStreamTransport(t *testing.T) {
+	ta, tb, maddr, peerA := testParameters(t)
+
+	for _, f := range Subtests {
+		t.Run(getFunctionName(f), func(t *testing.T) {
+			f(t, ta, tb, maddr, peerA)
+		})
+	}
 }
 
 func testParameters(t *testing.T) (transport.Transport, transport.Transport, ma.Multiaddr, peer.ID) {
