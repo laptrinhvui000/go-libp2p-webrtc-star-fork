@@ -1,0 +1,25 @@
+{
+  "name": "go-libp2p-webrtc-star",
+  "version": "1.0.0",
+  "description": "Tracks the libp2p WebRTC signaling star server dependency",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "star": "star-signal --port=9090 --host=127.0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennis-tra/go-libp2p-webrtc-star.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dennis-tra/go-libp2p-webrtc-star/issues"
+  },
+  "homepage": "https://github.com/dennis-tra/go-libp2p-webrtc-star#readme",
+  "dependencies": {
+    "libp2p-webrtc-star": "^0.22.2"
+  }
+}
