@@ -12,9 +12,9 @@ require (
 	github.com/libp2p/go-libp2p-yamux v0.5.1
 	github.com/multiformats/go-multiaddr v0.3.1
 	github.com/multiformats/go-multiaddr-fmt v0.1.0
-	github.com/pion/datachannel v1.4.21
-	github.com/pion/webrtc/v2 v2.2.26
-	github.com/stretchr/testify v1.6.1
+	github.com/pion/datachannel v1.5.2
+	github.com/pion/webrtc/v3 v3.1.25
+	github.com/stretchr/testify v1.7.0
 )
 
 // Remove when https://github.com/libp2p/go-libp2p-testing/pull/32 is merged

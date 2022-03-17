@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pion/webrtc/v2"
+	"github.com/pion/webrtc/v3"
 )
 
 const handshakeAnswerTimeout = 5 * time.Minute

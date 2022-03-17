@@ -9,7 +9,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 	yamux "github.com/libp2p/go-libp2p-yamux"
-	"github.com/pion/webrtc/v2"
+	"github.com/pion/webrtc/v3"
 	"github.com/stretchr/testify/require"
 )
 

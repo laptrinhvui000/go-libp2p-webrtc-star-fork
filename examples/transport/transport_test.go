@@ -13,7 +13,7 @@ import (
 	"github.com/libp2p/go-libp2p-testing/suites/transport"
 	yamux "github.com/libp2p/go-libp2p-yamux"
 	ma "github.com/multiformats/go-multiaddr"
-	"github.com/pion/webrtc/v2"
+	"github.com/pion/webrtc/v3"
 )
 
 const starAddress = "/dns4/localhost/tcp/9090/ws/p2p-webrtc-star"
